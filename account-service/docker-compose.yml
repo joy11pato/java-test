@@ -1,0 +1,72 @@
+version: "3.8"
+
+services:
+  # --- MICROSERVICIO DE CLIENTES ---
+  customer-app:
+    build: ./microservice-customers # Ruta a la carpeta del primer MS
+    container_name: customer-app-container
+    ports:
+      - "8081:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db-customers:5432/customers-db
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=root
+    networks:
+      - ms-network
+    depends_on:
+      db-customers:
+        condition: service_healthy
+
+  # --- MICROSERVICIO DE CUENTAS ---
+  account-app:
+    build: . # Este está en la carpeta actual
+    container_name: account-app-container
+    ports:
+      - "8082:8081" # Tu app usa 8081 internamente, lo sacamos al 8082 de tu PC
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db-accounts:5432/accounts-db
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=root
+      # IMPORTANTE: Apunta al nombre del servicio de clientes en la red de Docker
+      - URL_CUSTOMER_SERVICE=http://customer-app:8080/api/v1/customers/
+    networks:
+      - ms-network
+    depends_on:
+      db-accounts:
+        condition: service_healthy
+
+  # --- DB PARA CLIENTES ---
+  db-customers:
+    image: postgres:latest
+    container_name: db-customers
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: customers-db
+    networks:
+      - ms-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d customers-db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # --- DB PARA CUENTAS ---
+  db-accounts:
+    image: postgres:latest
+    container_name: db-accounts
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: accounts-db
+    networks:
+      - ms-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d accounts-db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+networks:
+  ms-network:
+    driver: bridge

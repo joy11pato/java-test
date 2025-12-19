@@ -1,0 +1,672 @@
+{
+	"info": {
+		"_postman_id": "0e5e0a18-1bc0-421b-b821-b6dea382b1c3",
+		"name": "ntt",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10787545",
+		"_collection_link": "https://lunar-comet-435228.postman.co/workspace/Spring-JPA-curso-platzi~9e1c86d6-2dac-41cf-b2cb-5e3efb79f92a/collection/10787545-0e5e0a18-1bc0-421b-b821-b6dea382b1c3?action=share&source=collection_link&creator=10787545"
+	},
+	"item": [
+		{
+			"name": "/api/v1/customers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/v1/customers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"customers"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 - list customers",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/customers",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"customers"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"domain": "",
+							"path": ""
+						}
+					],
+					"body": "{\n    \"success\": true,\n    \"message\": \"success\",\n    \"data\": [\n        {\n            \"name\": \"Jose Lema\",\n            \"gender\": \"male\",\n            \"idCard\": \"1719993022\",\n            \"address\": \"uio\",\n            \"phone\": \"0998502167\",\n            \"active\": true\n        },\n        {\n            \"name\": \"Capitan America\",\n            \"gender\": \"male\",\n            \"idCard\": \"1799993056\",\n            \"address\": \"nueva york\",\n            \"phone\": \"0998502196\",\n            \"active\": true\n        },\n        {\n            \"name\": \"Venonm\",\n            \"gender\": \"male\",\n            \"idCard\": \"2299993055\",\n            \"address\": \"form mars\",\n            \"phone\": \"0998789456\",\n            \"active\": true\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "/api/v1/customers/{id}",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Capitan America\",\r\n    \"gender\": \"male\",\r\n    \"idCard\": \"1799993056\",\r\n    \"address\": \"nueva york\",\r\n    \"phone\": \"0998502196\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/customers/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"customers",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Customer 1 - 200 OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Capitan America\",\r\n    \"gender\": \"male\",\r\n    \"idCard\": \"1799993056\",\r\n    \"address\": \"nueva york\",\r\n    \"phone\": \"0998502196\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/customers/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"customers",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"domain": "",
+							"path": ""
+						}
+					],
+					"body": "{\n    \"success\": true,\n    \"message\": \"success\",\n    \"data\": {\n        \"name\": \"Capitan America\",\n        \"gender\": \"male\",\n        \"idCard\": \"1799993056\",\n        \"address\": \"nueva york\",\n        \"phone\": \"0998502196\",\n        \"active\": true\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "/api/v1/customers/{idcard}",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Capitan America\",\r\n    \"gender\": \"male\",\r\n    \"idCard\": \"1799993056\",\r\n    \"address\": \"nueva york\",\r\n    \"phone\": \"0998502196\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/customers/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"customers",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Customer 1 - 200 OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Capitan America\",\r\n    \"gender\": \"male\",\r\n    \"idCard\": \"1799993056\",\r\n    \"address\": \"nueva york\",\r\n    \"phone\": \"0998502196\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/customers/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"customers",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"domain": "",
+							"path": ""
+						}
+					],
+					"body": "{\n    \"success\": true,\n    \"message\": \"success\",\n    \"data\": {\n        \"name\": \"Capitan America\",\n        \"gender\": \"male\",\n        \"idCard\": \"1799993056\",\n        \"address\": \"nueva york\",\n        \"phone\": \"0998502196\",\n        \"active\": true\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "/api/v1/customers/id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Capitan America\",\r\n    \"gender\": \"male\",\r\n    \"idCard\": \"1799993056\",\r\n    \"address\": \"nueva york\",\r\n    \"phone\": \"0998502196\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/customers/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"customers",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 - delete customer",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"Capitan America\",\"gender\":\"male\",\"idCard\":\"1799993056\",\"address\":\"nueva york\",\"phone\":\"0998502196\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/customers/5",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"customers",
+								"5"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"domain": "",
+							"path": ""
+						}
+					],
+					"body": "{\n    \"success\": true,\n    \"message\": \"success\",\n    \"data\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "/api/v1/customers",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Wolverine\",\r\n    \"gender\": \"male\",\r\n    \"idCard\": \"1111113055\",\r\n    \"address\": \"canada y bronx\",\r\n    \"phone\": \"0321689456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/customers",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"customers"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "201 - create customer",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"Wolverine\",\"gender\":\"male\",\"idCard\":\"1111113055\",\"address\":\"canada y bronx\",\"phone\":\"0321689456\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/customers",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"customers"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"domain": "",
+							"path": ""
+						}
+					],
+					"body": "{\n    \"success\": true,\n    \"message\": \"created\",\n    \"data\": {\n        \"id\": 6,\n        \"name\": \"Wolverine\",\n        \"gender\": \"male\",\n        \"idCard\": \"1111113055\",\n        \"address\": \"canada y bronx\",\n        \"phone\": \"0321689456\",\n        \"active\": true\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "/api/v1/customers",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Venonm\",\r\n    \"gender\": \"male\",\r\n    \"idCard\": \"2299993055\",\r\n    \"address\": \"form mars\",\r\n    \"phone\": \"0998789456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/customers/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"customers",
+						"5"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 - update customer",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"Venonm\",\"gender\":\"male\",\"idCard\":\"2299993055\",\"address\":\"form mars\",\"phone\":\"0998789456\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/customers/5",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"customers",
+								"5"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"domain": "",
+							"path": ""
+						}
+					],
+					"body": "{\n    \"success\": true,\n    \"message\": \"success\",\n    \"data\": {\n        \"name\": \"Venonm\",\n        \"gender\": \"male\",\n        \"idCard\": \"2299993055\",\n        \"address\": \"form mars\",\n        \"phone\": \"0998789456\",\n        \"active\": true\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "/api/v1/accounts",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"accountType\": \"CHECKING_ACCOUNT\",\r\n    \"clientId\": 3,\r\n    \"initialBalance\":1000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/api/v1/accounts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"v1",
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/accounts/client/{id}",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"accountType\": \"CHECKING_ACCOUNT\",\r\n    \"clientIdCard\": \"1719993022\",\r\n    \"initialBalance\":1000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/api/v1/accounts/client/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"v1",
+						"accounts",
+						"client",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/movements",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"accountId\": 1,\r\n    \"movementType\": \"DEPOSIT\",\r\n    \"debAmount\":100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/api/v1/movements",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"v1",
+						"movements"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/movements/client/{clientId}",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/api/v1/movements/client/1?startDate=2025-12-10&endDate=2025-12-19",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"v1",
+						"movements",
+						"client",
+						"1"
+					],
+					"query": [
+						{
+							"key": "startDate",
+							"value": "2025-12-10"
+						},
+						{
+							"key": "endDate",
+							"value": "2025-12-19"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/movements/report-download/{clientId}",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/api/v1/movements/report-download/1?startDate=2025-12-10&endDate=2025-12-19",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"v1",
+						"movements",
+						"report-download",
+						"1"
+					],
+					"query": [
+						{
+							"key": "startDate",
+							"value": "2025-12-10"
+						},
+						{
+							"key": "endDate",
+							"value": "2025-12-19"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
