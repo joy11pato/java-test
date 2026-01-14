@@ -13,7 +13,9 @@ import java.math.BigDecimal;
 @Builder
 public class AccountDto {
 
-    private String number;
+    private Long id;
+
+    private String accountNumber;
 
     private String accountType;
 
@@ -21,7 +23,7 @@ public class AccountDto {
 
     private Boolean status;
 
-    private Long client;
+    private Long idClient;
 
 
 }

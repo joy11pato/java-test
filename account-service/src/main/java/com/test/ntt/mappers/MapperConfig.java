@@ -18,7 +18,9 @@ public interface MapperConfig {
     AccountDto toAccountDto(Account account);
 
     @Mapping(source = "movementType.value", target = "movementType")
+    @Mapping(source = "account.accountType.value", target = "accountType")
+    @Mapping(source = "account.initialBalance", target = "initialBalance")
+    @Mapping(source = "account.number", target = "accountNumber")
     MovementDto toMovementDto (Movement movement);
 
-//    MovementsReportsDto toMovReportDto ()
 }
