@@ -23,7 +23,7 @@ public class AccountDto {
 
     private Boolean status;
 
-    private Long idClient;
+    private String client;
 
 
 }
