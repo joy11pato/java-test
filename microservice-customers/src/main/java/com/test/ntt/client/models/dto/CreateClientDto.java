@@ -19,7 +19,7 @@ public class CreateClientDto {
     private String gender;
 
     @NotBlank(message = "Idcard is mandatory")
-    @Size(min = 10, max = 30, message = "idCard must contain from 6 to 20 characters")
+    @Size(min = 10, max = 30, message = "idCard must contain from 6 to 30 characters")
     private String idCard;
 
     @NotBlank(message = "Address is mandatory")
@@ -28,6 +28,10 @@ public class CreateClientDto {
     @NotBlank(message = "Phone is mandatory")
     @Size(min = 6, message = "Phone number must not exceed 20 characters")
     private String phone;
+
+    @NotBlank(message = "Password is mandatory")
+    @Size(min = 4, max = 20, message = "Password must contain from 4 to 20 characters")
+    private String password;
 
 
 }

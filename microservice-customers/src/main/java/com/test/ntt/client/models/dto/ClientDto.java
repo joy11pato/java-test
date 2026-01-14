@@ -29,7 +29,7 @@ public class ClientDto {
     private String address;
 
     @NotBlank(message = "Phone is mandatory")
-    @Size(min = 20, message = "Phone number must not exceed 20 characters")
+    @Size(max = 20, message = "Phone number must not exceed 20 characters")
     private String phone;
 
     @NotBlank(message = "Status is mandatory")

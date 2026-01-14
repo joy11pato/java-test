@@ -75,16 +75,18 @@ public class ClientServiceImpl implements ClientService {
     public Mono<ResponseEntity<JsonResponse<ClientDto>>> createClient(CreateClientDto dto) {
         return Mono.fromCallable(() -> {
 
+            log.info("ClientDto; {}", dto);
+
                     Client client = new Client(
                             dto.getName(),
                             dto.getAddress(),
                             dto.getPhone(),
                             dto.getIdCard(),
                             dto.getGender(),
-                            UUID.randomUUID().toString());
+                            dto.getPassword());
                     return clientRepository.save(client);
                 })
-                .subscribeOn(Schedulers.boundedElastic()) // ¡Vital! Mueve el bloqueo a otro hilo
+                .subscribeOn(Schedulers.boundedElastic())
                 .map(savedClient -> {
                     ClientDto clientDto = MapperConfig.mapper.toClientDto(savedClient);
                     JsonResponse<ClientDto> resp = new JsonResponse<>(true, "success", clientDto);
