@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @Builder
 public class MovementDto {
 
-    private String number;
+    private String accountNumber;
 
     private String accountType;
 

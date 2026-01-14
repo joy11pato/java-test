@@ -51,11 +51,12 @@ public class AccountServiceImpl implements AccountService {
                             .map(account -> {
 
                                 AccountDto dto = AccountDto.builder()
-                                        .number(account.getNumber())
+                                        .id(account.getId())
+                                        .accountNumber(account.getNumber())
                                         .accountType(account.getAccountType().getValue())
                                         .initialBalance(account.getInitialBalance())
                                         .status(account.getStatus())
-                                        .client(account.getIdClient())
+                                        .idClient(account.getIdClient())
                                         .build();
                                 return dto;
                             })
@@ -122,11 +123,12 @@ public class AccountServiceImpl implements AccountService {
                                         : "Desconocido";
 
                                 return AccountDto.builder()
-                                        .number(account.getNumber())
+                                        .id(account.getId())
+                                        .accountNumber(account.getNumber())
                                         .accountType(tipoCuenta)
                                         .initialBalance(account.getInitialBalance())
                                         .status(account.getStatus())
-                                        .client(account.getIdClient())
+                                        .idClient(account.getIdClient())
                                         .build();
                             })
                             .collect(Collectors.toList());
