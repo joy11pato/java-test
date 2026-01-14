@@ -41,14 +41,17 @@ public class Account {
 
     private Long idClient;
 
+    private String client;
+
     public Account(){}
 
-    public Account(String number, Catalog accountType, BigDecimal initialBalance, Long idClient){
+    public Account(String number, Catalog accountType, BigDecimal initialBalance, Long idClient, String client){
         this.status = true;
         this.number = number;
         this.accountType = accountType;
         this.initialBalance = initialBalance;
         this.idClient = idClient;
+        this.client = client;
     }
 
 }

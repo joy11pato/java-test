@@ -15,6 +15,7 @@ public interface MapperConfig {
     MapperConfig mapper = Mappers.getMapper(MapperConfig.class);
 
     @Mapping(source = "accountType.value", target = "accountType")
+    @Mapping(source = "number", target = "accountNumber")
     AccountDto toAccountDto(Account account);
 
     @Mapping(source = "movementType.value", target = "movementType")

@@ -50,14 +50,7 @@ public class AccountServiceImpl implements AccountService {
                     return entityList.stream()
                             .map(account -> {
 
-                                AccountDto dto = AccountDto.builder()
-                                        .id(account.getId())
-                                        .accountNumber(account.getNumber())
-                                        .accountType(account.getAccountType().getValue())
-                                        .initialBalance(account.getInitialBalance())
-                                        .status(account.getStatus())
-                                        .idClient(account.getIdClient())
-                                        .build();
+                                AccountDto dto = MapperConfig.mapper.toAccountDto(account);
                                 return dto;
                             })
                             .collect(Collectors.toList());
@@ -122,14 +115,7 @@ public class AccountServiceImpl implements AccountService {
                                         ? account.getAccountType().getValue()
                                         : "Desconocido";
 
-                                return AccountDto.builder()
-                                        .id(account.getId())
-                                        .accountNumber(account.getNumber())
-                                        .accountType(tipoCuenta)
-                                        .initialBalance(account.getInitialBalance())
-                                        .status(account.getStatus())
-                                        .idClient(account.getIdClient())
-                                        .build();
+                                return MapperConfig.mapper.toAccountDto(account);
                             })
                             .collect(Collectors.toList());
                 })
@@ -170,7 +156,8 @@ public class AccountServiceImpl implements AccountService {
                     Account account = new Account(FunctionUtils.generateRandomNumber(),
                             accountType,
                             request.getInitialBalance(),
-                            customer.getId());
+                            customer.getId(),
+                            customer.getName());
 
                     return Mono.fromCallable(() -> accountRepository.save(account))
                             .subscribeOn(Schedulers.boundedElastic());
