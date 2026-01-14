@@ -23,7 +23,7 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db-accounts:5432/accounts-db
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=root
-      # COMUNICACIÓN INTERNA: Usamos el nombre del servicio y el puerto interno
+      
       - URL_CUSTOMER_SERVICE=http://customer-app:8080/api/v1/customers/
     networks:
       - ms-network
@@ -40,6 +40,8 @@ services:
       - POSTGRES_DB=customers-db
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=root
+    volumes:
+      - customer_data:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres -d customers-db"]
       interval: 5s
@@ -57,6 +59,8 @@ services:
       - POSTGRES_DB=accounts-db
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=root
+    volumes:
+      - account_data:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres -d accounts-db"]
       interval: 5s
@@ -65,6 +69,10 @@ services:
     networks:
       - ms-network
 
+volumes:
+  customer_data:
+  account_data:
+  
 networks:
   ms-network:
     driver: bridge
