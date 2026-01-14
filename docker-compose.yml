@@ -34,6 +34,8 @@ services:
   db-customers:
     image: postgres:15-alpine
     container_name: db-customers
+    ports:
+      - "5433:5432"
     environment:
       - POSTGRES_DB=customers-db
       - POSTGRES_USER=postgres
@@ -49,6 +51,8 @@ services:
   db-accounts:
     image: postgres:15-alpine
     container_name: db-accounts
+    ports:
+      - "5434:5432"
     environment:
       - POSTGRES_DB=accounts-db
       - POSTGRES_USER=postgres
